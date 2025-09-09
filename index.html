@@ -64,6 +64,29 @@
     .card{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);padding:20px}
     .muted{background:var(--muted)}
     .center{text-align:center}
+  /* 英数をInterに強制するユーティリティ */
+.en { font-family: 'Inter','Noto Sans JP',sans-serif; }
+
+/* 数字が多いUIはInter優先＋等幅数字に */
+.price,
+.kicker,
+.badge,
+.eyebrow,
+nav a,
+.deadline,
+.values .num,
+.tags .badge,
+.btn,
+.review .stars {
+  font-family: 'Inter','Noto Sans JP',sans-serif;
+  font-variant-numeric: tabular-nums;        /* 桁が揃う */
+  font-feature-settings: 'tnum' 1, 'lnum' 1; /* 等幅＋ライニング */
+  letter-spacing: .02em;                      /* ほんの少し締める */
+}
+
+/* 価格をもう一段だけ締めるなら */
+.price { letter-spacing: .01em; }
+
 </style>
 
     }
