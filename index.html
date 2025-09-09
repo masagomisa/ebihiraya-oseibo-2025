@@ -13,10 +13,10 @@
   <meta property="og:image" content="https://example.com/og-image.jpg" />
   <meta property="og:url" content="https://masagomisa.github.io/ebihiraya-oseibo-2025/" />
 
-  <!-- Fonts: Inter（英数）+ Noto Sans JP（日本語）-->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet" />
+<!-- Google Fonts 読み込み -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
 
-  <style>
+<style>
     :root{
       --bg:#fcfcfc;
       --ink:#0f0f0f;
@@ -28,6 +28,44 @@
       --radius-lg:20px;
       --shadow:0 10px 24px rgba(0,0,0,.08);
       --max:1120px;
+    }
+    /* Reset-ish */
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--ink)}
+    body{
+      font-family:'Noto Sans JP','Inter',
+        -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',
+        'Hiragino Kaku Gothic ProN','Yu Gothic',Meiryo,sans-serif;
+      line-height:1.65;
+      letter-spacing:.02em
+    }
+    h1,h2,h3{
+      line-height:1.25;
+      margin:.2em 0 .6em;
+      font-family:'Inter','Noto Sans JP',sans-serif; /* 見出しはInter優先 */
+    }
+    h1{font-size:clamp(28px,5vw,44px);font-weight:700}
+    h2{font-size:clamp(22px,3.6vw,32px);font-weight:700}
+    h3{font-size:clamp(18px,2.6vw,22px);font-weight:700}
+    p{margin:.6em 0;color:var(--sub)}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;height:auto;border-radius:12px;display:block}
+    .wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
+    .grid{display:grid;gap:24px}
+    .btn{display:inline-block;background:var(--brand);color:var(--brand-ink);padding:14px 22px;border-radius:999px;font-weight:700;letter-spacing:.04em;transition:.2s ease;box-shadow:0 6px 18px rgba(222,7,20,.25)}
+    .btn:hover{transform:translateY(-1px);box-shadow:0 10px 26px rgba(222,7,20,.35)}
+    .btn--ghost{background:transparent;border:2px solid var(--brand);color:var(--brand);box-shadow:none}
+    .badge{display:inline-block;background:#fff;border:1px solid #ececec;border-radius:999px;padding:6px 12px;font-size:12px}
+    .eyebrow{
+      font-family:'Inter',system-ui,sans-serif;
+      font-size:12px;letter-spacing:.12em;
+      text-transform:uppercase;color:var(--brand)
+    }
+    .card{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);padding:20px}
+    .muted{background:var(--muted)}
+    .center{text-align:center}
+</style>
+
     }
     /* Reset-ish */
     *{box-sizing:border-box}
