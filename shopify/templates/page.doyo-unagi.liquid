@@ -1,0 +1,443 @@
+{% layout none %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>土用の丑の日 2026 ｜ {{ shop.name }}</title>
+<meta name="description" content="今年は二の丑なし。7月26日（日）の一日限り。海老平や直売所の特大うなぎ蒲焼・海鮮BBQセットをご予約ください。">
+<link rel="canonical" href="{{ canonical_url }}">
+{{ content_for_header }}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;900&family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho:wght@700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --urushi:#15100B;
+    --urushi-2:#1F1812;
+    --kin:#C9A24B;
+    --kin-bright:#E4C272;
+    --amber:#7A3B1B;
+    --hi:#B43A2A;
+    --sansho:#6E7A45;
+    --washi:#F2EBDD;
+    --washi-dim:#CFC4AE;
+    --line:rgba(201,162,75,.28);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--urushi);
+    color:var(--washi);
+    font-family:"Noto Sans JP",sans-serif;
+    line-height:1.85;
+    font-feature-settings:"palt";
+    overflow-x:hidden;
+  }
+  .mincho{font-family:"Shippori Mincho","Noto Serif JP",serif;}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 24px;}
+
+  .topbar{
+    background:var(--hi);color:var(--washi);
+    text-align:center;font-size:13px;letter-spacing:.08em;
+    padding:9px 16px;font-weight:500;
+  }
+  .topbar strong{color:#fff;font-weight:700;}
+
+  header.site{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:18px 24px;border-bottom:1px solid var(--line);
+    position:sticky;top:0;z-index:50;
+    background:rgba(21,16,11,.86);backdrop-filter:blur(8px);
+  }
+  .brand{font-family:"Shippori Mincho",serif;font-weight:800;font-size:19px;letter-spacing:.14em;color:var(--washi);}
+  .brand small{display:block;font-family:"Noto Sans JP";font-weight:400;font-size:10px;letter-spacing:.3em;color:var(--kin);margin-top:2px;}
+  .nav-cta{
+    font-size:13px;font-weight:700;letter-spacing:.06em;
+    background:var(--kin);color:var(--urushi);
+    padding:10px 20px;border-radius:2px;text-decoration:none;white-space:nowrap;
+    transition:background .2s;
+  }
+  .nav-cta:hover{background:var(--kin-bright);}
+
+  .hero{
+    position:relative;padding:64px 0 72px;
+    background:
+      radial-gradient(120% 80% at 78% 30%, rgba(122,59,27,.45) 0%, transparent 55%),
+      linear-gradient(180deg,#15100B 0%,#0F0B07 100%);
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";position:absolute;inset:0;opacity:.10;pointer-events:none;
+    background-image:radial-gradient(circle at 100% 0, transparent 38px, var(--kin) 39px, transparent 40px),
+                     radial-gradient(circle at 100% 0, transparent 64px, var(--kin) 65px, transparent 66px),
+                     radial-gradient(circle at 100% 0, transparent 90px, var(--kin) 91px, transparent 92px);
+    background-size:120px 120px;background-position:top right;
+  }
+  .hero-grid{position:relative;display:grid;grid-template-columns:1.15fr .85fr;gap:32px;align-items:center;}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:10px;
+    font-size:13px;letter-spacing:.22em;color:var(--kin);font-weight:500;margin-bottom:22px;
+  }
+  .eyebrow::before{content:"";width:34px;height:1px;background:var(--kin);}
+  .hero h1{
+    font-family:"Shippori Mincho",serif;font-weight:800;
+    font-size:clamp(46px,8vw,88px);line-height:1.02;letter-spacing:.04em;
+    color:var(--washi);margin-bottom:8px;
+  }
+  .hero h1 .ushi{color:var(--kin-bright);display:block;font-size:1.32em;text-shadow:0 2px 30px rgba(228,194,114,.25);}
+  .hero .date{
+    font-family:"Shippori Mincho",serif;font-size:clamp(20px,3vw,26px);
+    color:var(--washi);margin:18px 0 6px;letter-spacing:.05em;
+  }
+  .hero .date b{color:var(--hi);font-size:1.15em;}
+  .hero .note-2nd{
+    font-size:14px;color:var(--washi-dim);letter-spacing:.04em;margin-bottom:28px;
+    border-left:2px solid var(--hi);padding-left:12px;
+  }
+  .hero .note-2nd b{color:var(--kin-bright);font-weight:700;}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap;}
+  .btn-primary{
+    background:var(--kin);color:var(--urushi);font-weight:700;letter-spacing:.06em;
+    padding:16px 32px;border-radius:2px;text-decoration:none;font-size:15px;
+    transition:transform .15s,background .2s;
+  }
+  .btn-primary:hover{background:var(--kin-bright);transform:translateY(-2px);}
+  .btn-ghost{
+    border:1px solid var(--line);color:var(--washi);font-weight:500;letter-spacing:.06em;
+    padding:16px 28px;border-radius:2px;text-decoration:none;font-size:15px;transition:border-color .2s;
+  }
+  .btn-ghost:hover{border-color:var(--kin);}
+
+  .unagi-stage{position:relative;display:flex;justify-content:center;align-items:stretch;min-height:460px;}
+  .scale-arrow{
+    position:absolute;left:-6px;top:0;bottom:0;width:30px;
+    display:flex;flex-direction:column;align-items:center;justify-content:space-between;
+    color:var(--kin);font-size:11px;letter-spacing:.3em;writing-mode:vertical-rl;
+  }
+  .scale-arrow .bar{width:1px;flex:1;background:linear-gradient(var(--kin),transparent 8%,transparent 92%,var(--kin));margin:6px 0;}
+  .scale-arrow .tip{font-family:"Shippori Mincho";writing-mode:horizontal-tb;background:var(--hi);color:#fff;padding:4px 7px;border-radius:2px;font-size:10px;letter-spacing:.1em;}
+  .unagi-hero-img{
+    width:148px;border-radius:80px/180px;overflow:hidden;
+    border:1px solid rgba(201,162,75,.25);
+    box-shadow:0 0 50px rgba(122,59,27,.4);
+  }
+  .unagi-hero-img img{width:100%;height:100%;object-fit:cover;display:block;}
+  /* 画像未設定時のフォールバック */
+  .unagi-hero-img--placeholder{
+    background:linear-gradient(105deg, #3a1d0d 0%, #6b3415 22%, #8f4a1e 40%, #5e2e12 60%, #2a1408 100%);
+    box-shadow:inset 0 0 60px rgba(0,0,0,.6), 0 0 50px rgba(122,59,27,.4);
+    position:relative;
+  }
+  .unagi-hero-img--placeholder::after{
+    content:"";position:absolute;top:0;bottom:0;left:30%;width:22%;
+    background:linear-gradient(90deg,transparent,rgba(228,194,114,.55),transparent);
+    filter:blur(3px);animation:sheen 6s ease-in-out infinite;
+  }
+  @keyframes sheen{0%,100%{transform:translateX(-8px);opacity:.5}50%{transform:translateX(8px);opacity:.85}}
+
+  .delivery-bar{background:var(--urushi-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .delivery-grid{display:grid;grid-template-columns:repeat(3,1fr);}
+  .dcol{padding:30px 26px;text-align:center;border-right:1px solid var(--line);}
+  .dcol:last-child{border-right:none;}
+  .dcol .k{font-size:11px;letter-spacing:.2em;color:var(--kin);margin-bottom:8px;}
+  .dcol .t{font-family:"Shippori Mincho";font-size:19px;font-weight:700;margin-bottom:6px;}
+  .dcol .d{font-size:13px;color:var(--washi-dim);line-height:1.7;}
+  .dcol .deadline{color:var(--hi);font-weight:700;}
+
+  section{padding:78px 0;}
+  .sec-eyebrow{font-size:12px;letter-spacing:.26em;color:var(--kin);margin-bottom:14px;}
+  .sec-title{font-family:"Shippori Mincho";font-weight:800;font-size:clamp(28px,4.5vw,40px);letter-spacing:.04em;line-height:1.3;margin-bottom:18px;}
+  .sec-lead{color:var(--washi-dim);max-width:620px;font-size:15px;}
+
+  .product{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;}
+  .product-visual{aspect-ratio:4/5;border-radius:4px;overflow:hidden;border:1px solid var(--line);}
+  .product-visual img{width:100%;height:100%;object-fit:cover;display:block;}
+  .product-visual--placeholder{
+    background:linear-gradient(150deg,#241409,#3a1d0d 50%,#1a0f07);
+    display:flex;align-items:center;justify-content:center;text-align:center;
+    color:var(--washi-dim);font-size:12px;letter-spacing:.1em;padding:24px;line-height:1.9;
+  }
+  .price-row{display:flex;align-items:baseline;gap:6px;margin:20px 0 4px;}
+  .price-row .yen{font-size:20px;color:var(--washi);}
+  .price-row .num{font-family:"Shippori Mincho";font-weight:800;font-size:64px;color:var(--kin-bright);line-height:1;}
+  .price-row .tax{font-size:13px;color:var(--washi-dim);}
+  .price-cap{font-size:12px;color:var(--washi-dim);margin-bottom:22px;}
+  .feat-list{list-style:none;margin:22px 0;}
+  .feat-list li{padding:11px 0 11px 26px;border-bottom:1px solid var(--line);font-size:14.5px;position:relative;}
+  .feat-list li::before{content:"鰻";font-family:"Shippori Mincho";color:var(--kin);font-size:12px;position:absolute;left:0;top:13px;}
+
+  .steps{background:var(--urushi-2);}
+  .step-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:40px;}
+  .step{background:var(--urushi);border:1px solid var(--line);border-radius:4px;padding:24px 20px;}
+  .step .no{font-family:"Shippori Mincho";font-size:13px;color:var(--kin);letter-spacing:.1em;margin-bottom:14px;}
+  .step .no b{font-size:30px;color:var(--kin-bright);}
+  .step .step-ph{aspect-ratio:1;border-radius:3px;overflow:hidden;margin-bottom:14px;}
+  .step .step-ph img{width:100%;height:100%;object-fit:cover;display:block;}
+  .step .step-ph--placeholder{background:linear-gradient(135deg,#2a1810,#3a1d0d);display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--washi-dim);letter-spacing:.08em;}
+  .step p{font-size:13.5px;color:var(--washi);line-height:1.7;}
+
+  .bbq{
+    background:
+      radial-gradient(110% 70% at 20% 20%, rgba(180,58,42,.30), transparent 55%),
+      linear-gradient(180deg,#1a0d09,#150d0a);
+    border-top:1px solid var(--line);
+  }
+  .bbq .sec-eyebrow{color:var(--hi);}
+  .bbq-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:center;margin-top:8px;}
+  .bbq-visual{aspect-ratio:1;border-radius:4px;overflow:hidden;border:1px solid rgba(180,58,42,.4);}
+  .bbq-visual img{width:100%;height:100%;object-fit:cover;display:block;}
+  .bbq-visual--placeholder{background:linear-gradient(150deg,#3a1410,#5a2018 55%,#1a0d09);display:flex;align-items:center;justify-content:center;color:var(--washi-dim);font-size:12px;letter-spacing:.1em;text-align:center;padding:24px;line-height:1.9;}
+  .bbq-sets{display:flex;flex-direction:column;gap:16px;margin-top:24px;}
+  .set-card{
+    border:1px solid var(--line);border-radius:4px;padding:22px 24px;
+    display:flex;justify-content:space-between;align-items:center;gap:16px;
+    background:rgba(21,13,9,.5);transition:border-color .2s,transform .15s;
+  }
+  .set-card:hover{border-color:var(--hi);transform:translateX(4px);}
+  .set-card .sname{font-family:"Shippori Mincho";font-weight:700;font-size:18px;margin-bottom:4px;}
+  .set-card .sdesc{font-size:12.5px;color:var(--washi-dim);}
+  .set-card .sprice{font-family:"Shippori Mincho";font-weight:800;font-size:28px;color:var(--kin-bright);white-space:nowrap;}
+  .set-card .sprice small{font-size:12px;color:var(--washi-dim);font-weight:400;}
+
+  .final{background:linear-gradient(180deg,#0F0B07,#15100B);text-align:center;}
+  .final h2{font-family:"Shippori Mincho";font-weight:800;font-size:clamp(26px,4vw,38px);letter-spacing:.05em;margin-bottom:16px;}
+  .final p{color:var(--washi-dim);max-width:520px;margin:0 auto 32px;font-size:15px;}
+  .final-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+  .btn-line{background:#06C755;color:#fff;font-weight:700;padding:16px 30px;border-radius:2px;text-decoration:none;font-size:15px;letter-spacing:.04em;transition:opacity .2s;}
+  .btn-line:hover{opacity:.88;}
+
+  footer{background:var(--urushi-2);border-top:1px solid var(--line);padding:48px 0 40px;}
+  .foot-grid{display:flex;justify-content:space-between;flex-wrap:wrap;gap:30px;}
+  .foot-brand{font-family:"Shippori Mincho";font-weight:800;font-size:20px;letter-spacing:.12em;}
+  .foot-brand small{display:block;font-family:"Noto Sans JP";font-weight:400;font-size:10px;letter-spacing:.28em;color:var(--kin);margin-top:4px;}
+  .foot-info{font-size:13px;color:var(--washi-dim);line-height:2;text-align:right;}
+  .foot-info .closed{color:var(--hi);}
+
+  @media(max-width:820px){
+    .hero-grid{grid-template-columns:1fr;gap:24px;}
+    .unagi-stage{min-height:380px;order:-1;}
+    .delivery-grid{grid-template-columns:1fr;}
+    .dcol{border-right:none;border-bottom:1px solid var(--line);}
+    .dcol:last-child{border-bottom:none;}
+    .product{grid-template-columns:1fr;gap:28px;}
+    .step-grid{grid-template-columns:1fr 1fr;}
+    .bbq-grid{grid-template-columns:1fr;gap:28px;}
+    .foot-info{text-align:left;}
+  }
+  @media(max-width:440px){
+    .step-grid{grid-template-columns:1fr;}
+    .set-card{flex-direction:column;align-items:flex-start;}
+  }
+  @media(prefers-reduced-motion:reduce){
+    .unagi-hero-img--placeholder::after{animation:none;}
+    *{scroll-behavior:auto;}
+  }
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease;}
+  .reveal.in{opacity:1;transform:none;}
+  :focus-visible{outline:2px solid var(--kin-bright);outline-offset:3px;}
+</style>
+</head>
+<body>
+
+{%- comment -%}
+  管理画面 > オンラインストア > ページ でこのページを作成し、
+  テンプレートを "page.doyo-unagi" に設定してください。
+
+  画像の変更: 管理画面 > コンテンツ > ファイル に画像をアップロードし、
+  下記の {{ 'xxx.jpg' | asset_url }} を実際のURLに差し替えてください。
+
+  商品リンク: #order-unagi / #bbq-standard / #bbq-premium を
+  実際の商品URLまたはカートリンクに差し替えてください。
+
+  LINEリンク: btn-line の href を実際のLINE友だち追加URLに差し替えてください。
+{%- endcomment -%}
+
+<div class="topbar">今年は <strong>二の丑なし</strong>。土用の丑の日は <strong>7月26日（日）の一日だけ</strong> ── ご予約はお早めに。</div>
+
+<header class="site">
+  <div class="brand">海老平や直売所<small>EBIHIRAYA ｜ 福岡・港</small></div>
+  <a href="#order" class="nav-cta">うなぎを予約する</a>
+</header>
+
+<!-- ヒーロー -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">土用の丑の日 2026</span>
+      <h1>暑い夏こそ<span class="ushi">鰻。</span></h1>
+      <p class="date">丑の日は <b>7/26</b>（日）</p>
+      <p class="note-2nd">今年は<b>二の丑がありません</b>。うなぎを味わう日はこの一日きり。冷凍蒲焼だから、慌てずに前もってご用意を。</p>
+      <div class="hero-cta">
+        <a href="#order" class="btn-primary">特大うなぎを予約する</a>
+        <a href="#bbq" class="btn-ghost">夏のBBQセットを見る</a>
+      </div>
+    </div>
+    <div class="unagi-stage">
+      <div class="scale-arrow"><span class="tip">特大</span><span class="bar"></span><span>ほぼ原寸大</span><span class="bar"></span></div>
+      {%- comment -%}
+        画像準備後: <div class="unagi-hero-img">
+                      <img src="{{ 'unagi-hero.jpg' | asset_url }}" alt="特大うなぎ蒲焼" width="148" height="406" loading="eager">
+                    </div>
+      {%- endcomment -%}
+      <div class="unagi-hero-img unagi-hero-img--placeholder"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 受け取り3導線 -->
+<div class="delivery-bar">
+  <div class="wrap">
+    <div class="delivery-grid">
+      <div class="dcol">
+        <div class="k">ONLINE｜全国配送</div>
+        <div class="t">ご自宅へお届け</div>
+        <div class="d">クール便で発送します。<br>ご注文締切 <span class="deadline">7/23（木）</span></div>
+      </div>
+      <div class="dcol">
+        <div class="k">STORE｜店頭受け取り</div>
+        <div class="t">お店で受け取る</div>
+        <div class="d">ご予約分をお渡しします。<br>受け取り <span class="deadline">7/24（金）・25（土）</span></div>
+      </div>
+      <div class="dcol">
+        <div class="k">GIFT｜贈りもの</div>
+        <div class="t">お中元・お盆に</div>
+        <div class="d">日持ちする冷凍蒲焼。<br>暑中見舞い・帰省土産にも。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- うなぎ商品 -->
+<section id="order">
+  <div class="wrap">
+    <div class="product">
+      {%- comment -%}
+        画像準備後: <div class="product-visual">
+                      <img src="{{ 'unagi-jubako.jpg' | asset_url }}" alt="特大うなぎ蒲焼 重箱盛り" width="600" height="750" loading="lazy">
+                    </div>
+      {%- endcomment -%}
+      <div class="product-visual product-visual--placeholder">
+        ［ 画像差し込み ］<br>特大うなぎ蒲焼<br>重箱／盛り付けカット<br>4:5 比率
+      </div>
+      <div class="reveal">
+        <span class="sec-eyebrow">特大うなぎ蒲焼（冷凍）</span>
+        <h2 class="sec-title">焼きたての照りを、<br>そのまま食卓へ。</h2>
+        <div class="price-row">
+          <span class="yen">¥</span>
+          <span class="num">1,000</span>
+          <span class="tax">（税込）</span>
+        </div>
+        <p class="price-cap">※価格は仮置きです（仕入れ確定後に差し替え）</p>
+        <ul class="feat-list">
+          <li>ほぼ原寸大の特大サイズ。食べごたえ十分。</li>
+          <li>うなぎのビタミンAは、ほぼ全量が吸収されます。</li>
+          <li>専用の蒲焼のタレも単品で販売中。</li>
+          <li>冷凍だから、丑の日に合わせて慌てず準備できます。</li>
+        </ul>
+        <a href="#order-unagi" class="btn-primary">数量を選んで予約する</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 美味しい温め方 -->
+<section class="steps">
+  <div class="wrap">
+    <span class="sec-eyebrow">美味しい温め方</span>
+    <h2 class="sec-title">ひと手間で、お店の味に。</h2>
+    <p class="sec-lead">冷凍うなぎは、温め方しだいで仕上がりが大きく変わります。この4手順で、皮はカリッと身はふっくら。</p>
+    <div class="step-grid">
+      {%- assign steps = "熱湯に1分間浸して、余分なタレを落とす。,キッチンペーパーで水分をやさしく拭き取る。,タレと酒を1:1で、汁気がなくなるまで煮込む。,仕上げにトースターで焼いて、カリッとさせる。" | split: "," -%}
+      {%- for step_text in steps -%}
+        {%- assign step_num = forloop.index | prepend: "0" | slice: -2, 2 -%}
+        <div class="step reveal">
+          <div class="no"><b>{{ step_num }}</b></div>
+          {%- comment -%}
+            画像準備後: <div class="step-ph">
+                          <img src="{{ 'step-' | append: forloop.index | append: '.jpg' | asset_url }}" alt="手順{{ forloop.index }}" loading="lazy">
+                        </div>
+          {%- endcomment -%}
+          <div class="step-ph step-ph--placeholder">［ 工程写真 ］</div>
+          <p>{{ step_text }}</p>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+<!-- BBQ -->
+<section class="bbq" id="bbq">
+  <div class="wrap">
+    <span class="sec-eyebrow">夏のBBQセット</span>
+    <h2 class="sec-title">外食より、仲間と炭火を囲む夏。</h2>
+    <p class="sec-lead">直売所だから組める、鮮度そのままの海鮮BBQセット。人数とご予算で選べる2タイプをご用意しました。</p>
+    <div class="bbq-grid">
+      {%- comment -%}
+        画像準備後: <div class="bbq-visual">
+                      <img src="{{ 'bbq-seafood.jpg' | asset_url }}" alt="海鮮BBQセット" loading="lazy">
+                    </div>
+      {%- endcomment -%}
+      <div class="bbq-visual bbq-visual--placeholder">
+        ［ 画像差し込み ］<br>海鮮BBQセット<br>盛り合わせ・炭火シーン<br>1:1 比率
+      </div>
+      <div>
+        <div class="bbq-sets">
+          <div class="set-card reveal">
+            <div>
+              <div class="sname">スタンダードセット</div>
+              <div class="sdesc">気軽に楽しむ、友人とのBBQに。〔内容は確定後に記載〕</div>
+            </div>
+            <div class="sprice">¥5,980 <small>税込</small></div>
+          </div>
+          <div class="set-card reveal">
+            <div>
+              <div class="sname">プレミアムセット</div>
+              <div class="sdesc">少し贅沢に、特別な顔ぶれで。〔内容は確定後に記載〕</div>
+            </div>
+            <div class="sprice">¥6,980 <small>税込</small></div>
+          </div>
+        </div>
+        <p style="font-size:13px;color:var(--washi-dim);margin-top:20px;border-left:2px solid var(--hi);padding-left:12px;">海の日連休（7/18〜20）に間に合わせるなら、店頭受け取りは <b style="color:var(--kin-bright)">7/18（土）</b>まで。配送はお早めに。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 最終CTA -->
+<section class="final">
+  <div class="wrap">
+    <h2 class="mincho">この夏の一日を、<br>うなぎで締めくくる。</h2>
+    <p>ご予約・ご注文はオンラインから。LINEのお友だちには、締切のご案内やお得な情報を先にお届けします。</p>
+    <div class="final-cta">
+      <a href="#order" class="btn-primary">うなぎ・BBQを予約する</a>
+      {%- comment -%} LINE友だち追加URLに差し替えてください {%- endcomment -%}
+      <a href="https://lin.ee/XXXXXXX" class="btn-line">LINEで友だち追加</a>
+    </div>
+  </div>
+</section>
+
+<!-- フッター -->
+<footer>
+  <div class="wrap foot-grid">
+    <div>
+      <div class="foot-brand">海老平や直売所<small>株式会社ケイアイ</small></div>
+    </div>
+    <div class="foot-info">
+      福岡市中央区港2-5-32-102<br>
+      TEL 092-771-6228 ／ 営業 10:00–17:00<br>
+      <span class="closed">定休日：水・日・祝</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: .15 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
