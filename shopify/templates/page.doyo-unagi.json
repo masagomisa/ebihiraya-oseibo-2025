@@ -1,0 +1,15 @@
+{
+  "layout": "lp",
+  "sections": {
+    "main": {
+      "type": "doyo-unagi-lp",
+      "settings": {
+        "unagi_price": "1,000",
+        "price_note": "※価格は仮置きです（仕入れ確定後に差し替え）",
+        "bbq_standard_price": "5,980",
+        "bbq_premium_price": "6,980"
+      }
+    }
+  },
+  "order": ["main"]
+}

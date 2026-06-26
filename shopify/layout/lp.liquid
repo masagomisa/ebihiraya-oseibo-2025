@@ -1,11 +1,10 @@
-{% layout none %}
 <!DOCTYPE html>
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>土用の丑の日 2026 ｜ {{ shop.name }}</title>
-<meta name="description" content="今年は二の丑なし。7月26日（日）の一日限り。海老平や直売所の特大うなぎ蒲焼・海鮮BBQセットをご予約ください。">
+<title>{{ page_title }} ｜ {{ shop.name }}</title>
+<meta name="description" content="{{ page_description | escape }}">
 <link rel="canonical" href="{{ canonical_url }}">
 {{ content_for_header }}
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,9 +16,7 @@
     --urushi-2:#1F1812;
     --kin:#C9A24B;
     --kin-bright:#E4C272;
-    --amber:#7A3B1B;
     --hi:#B43A2A;
-    --sansho:#6E7A45;
     --washi:#F2EBDD;
     --washi-dim:#CFC4AE;
     --line:rgba(201,162,75,.28);
@@ -118,12 +115,11 @@
   .scale-arrow .bar{width:1px;flex:1;background:linear-gradient(var(--kin),transparent 8%,transparent 92%,var(--kin));margin:6px 0;}
   .scale-arrow .tip{font-family:"Shippori Mincho";writing-mode:horizontal-tb;background:var(--hi);color:#fff;padding:4px 7px;border-radius:2px;font-size:10px;letter-spacing:.1em;}
   .unagi-hero-img{
-    width:148px;border-radius:80px/180px;overflow:hidden;
-    border:1px solid rgba(201,162,75,.25);
+    width:148px;border-radius:80px 80px 80px 80px / 180px 180px 180px 180px;
+    overflow:hidden;border:1px solid rgba(201,162,75,.25);
     box-shadow:0 0 50px rgba(122,59,27,.4);
   }
   .unagi-hero-img img{width:100%;height:100%;object-fit:cover;display:block;}
-  /* 画像未設定時のフォールバック */
   .unagi-hero-img--placeholder{
     background:linear-gradient(105deg, #3a1d0d 0%, #6b3415 22%, #8f4a1e 40%, #5e2e12 60%, #2a1408 100%);
     box-shadow:inset 0 0 60px rgba(0,0,0,.6), 0 0 50px rgba(122,59,27,.4);
@@ -207,7 +203,7 @@
   .btn-line{background:#06C755;color:#fff;font-weight:700;padding:16px 30px;border-radius:2px;text-decoration:none;font-size:15px;letter-spacing:.04em;transition:opacity .2s;}
   .btn-line:hover{opacity:.88;}
 
-  footer{background:var(--urushi-2);border-top:1px solid var(--line);padding:48px 0 40px;}
+  footer.lp-foot{background:var(--urushi-2);border-top:1px solid var(--line);padding:48px 0 40px;}
   .foot-grid{display:flex;justify-content:space-between;flex-wrap:wrap;gap:30px;}
   .foot-brand{font-family:"Shippori Mincho";font-weight:800;font-size:20px;letter-spacing:.12em;}
   .foot-brand small{display:block;font-family:"Noto Sans JP";font-weight:400;font-size:10px;letter-spacing:.28em;color:var(--kin);margin-top:4px;}
@@ -239,205 +235,6 @@
 </style>
 </head>
 <body>
-
-{%- comment -%}
-  管理画面 > オンラインストア > ページ でこのページを作成し、
-  テンプレートを "page.doyo-unagi" に設定してください。
-
-  画像の変更: 管理画面 > コンテンツ > ファイル に画像をアップロードし、
-  下記の {{ 'xxx.jpg' | asset_url }} を実際のURLに差し替えてください。
-
-  商品リンク: #order-unagi / #bbq-standard / #bbq-premium を
-  実際の商品URLまたはカートリンクに差し替えてください。
-
-  LINEリンク: btn-line の href を実際のLINE友だち追加URLに差し替えてください。
-{%- endcomment -%}
-
-<div class="topbar">今年は <strong>二の丑なし</strong>。土用の丑の日は <strong>7月26日（日）の一日だけ</strong> ── ご予約はお早めに。</div>
-
-<header class="site">
-  <div class="brand">海老平や直売所<small>EBIHIRAYA ｜ 福岡・港</small></div>
-  <a href="#order" class="nav-cta">うなぎを予約する</a>
-</header>
-
-<!-- ヒーロー -->
-<section class="hero">
-  <div class="wrap hero-grid">
-    <div>
-      <span class="eyebrow">土用の丑の日 2026</span>
-      <h1>暑い夏こそ<span class="ushi">鰻。</span></h1>
-      <p class="date">丑の日は <b>7/26</b>（日）</p>
-      <p class="note-2nd">今年は<b>二の丑がありません</b>。うなぎを味わう日はこの一日きり。冷凍蒲焼だから、慌てずに前もってご用意を。</p>
-      <div class="hero-cta">
-        <a href="#order" class="btn-primary">特大うなぎを予約する</a>
-        <a href="#bbq" class="btn-ghost">夏のBBQセットを見る</a>
-      </div>
-    </div>
-    <div class="unagi-stage">
-      <div class="scale-arrow"><span class="tip">特大</span><span class="bar"></span><span>ほぼ原寸大</span><span class="bar"></span></div>
-      {%- comment -%}
-        画像準備後: <div class="unagi-hero-img">
-                      <img src="{{ 'unagi-hero.jpg' | asset_url }}" alt="特大うなぎ蒲焼" width="148" height="406" loading="eager">
-                    </div>
-      {%- endcomment -%}
-      <div class="unagi-hero-img unagi-hero-img--placeholder"></div>
-    </div>
-  </div>
-</section>
-
-<!-- 受け取り3導線 -->
-<div class="delivery-bar">
-  <div class="wrap">
-    <div class="delivery-grid">
-      <div class="dcol">
-        <div class="k">ONLINE｜全国配送</div>
-        <div class="t">ご自宅へお届け</div>
-        <div class="d">クール便で発送します。<br>ご注文締切 <span class="deadline">7/23（木）</span></div>
-      </div>
-      <div class="dcol">
-        <div class="k">STORE｜店頭受け取り</div>
-        <div class="t">お店で受け取る</div>
-        <div class="d">ご予約分をお渡しします。<br>受け取り <span class="deadline">7/24（金）・25（土）</span></div>
-      </div>
-      <div class="dcol">
-        <div class="k">GIFT｜贈りもの</div>
-        <div class="t">お中元・お盆に</div>
-        <div class="d">日持ちする冷凍蒲焼。<br>暑中見舞い・帰省土産にも。</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- うなぎ商品 -->
-<section id="order">
-  <div class="wrap">
-    <div class="product">
-      {%- comment -%}
-        画像準備後: <div class="product-visual">
-                      <img src="{{ 'unagi-jubako.jpg' | asset_url }}" alt="特大うなぎ蒲焼 重箱盛り" width="600" height="750" loading="lazy">
-                    </div>
-      {%- endcomment -%}
-      <div class="product-visual product-visual--placeholder">
-        ［ 画像差し込み ］<br>特大うなぎ蒲焼<br>重箱／盛り付けカット<br>4:5 比率
-      </div>
-      <div class="reveal">
-        <span class="sec-eyebrow">特大うなぎ蒲焼（冷凍）</span>
-        <h2 class="sec-title">焼きたての照りを、<br>そのまま食卓へ。</h2>
-        <div class="price-row">
-          <span class="yen">¥</span>
-          <span class="num">1,000</span>
-          <span class="tax">（税込）</span>
-        </div>
-        <p class="price-cap">※価格は仮置きです（仕入れ確定後に差し替え）</p>
-        <ul class="feat-list">
-          <li>ほぼ原寸大の特大サイズ。食べごたえ十分。</li>
-          <li>うなぎのビタミンAは、ほぼ全量が吸収されます。</li>
-          <li>専用の蒲焼のタレも単品で販売中。</li>
-          <li>冷凍だから、丑の日に合わせて慌てず準備できます。</li>
-        </ul>
-        <a href="#order-unagi" class="btn-primary">数量を選んで予約する</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 美味しい温め方 -->
-<section class="steps">
-  <div class="wrap">
-    <span class="sec-eyebrow">美味しい温め方</span>
-    <h2 class="sec-title">ひと手間で、お店の味に。</h2>
-    <p class="sec-lead">冷凍うなぎは、温め方しだいで仕上がりが大きく変わります。この4手順で、皮はカリッと身はふっくら。</p>
-    <div class="step-grid">
-      {%- assign steps = "熱湯に1分間浸して、余分なタレを落とす。,キッチンペーパーで水分をやさしく拭き取る。,タレと酒を1:1で、汁気がなくなるまで煮込む。,仕上げにトースターで焼いて、カリッとさせる。" | split: "," -%}
-      {%- for step_text in steps -%}
-        {%- assign step_num = forloop.index | prepend: "0" | slice: -2, 2 -%}
-        <div class="step reveal">
-          <div class="no"><b>{{ step_num }}</b></div>
-          {%- comment -%}
-            画像準備後: <div class="step-ph">
-                          <img src="{{ 'step-' | append: forloop.index | append: '.jpg' | asset_url }}" alt="手順{{ forloop.index }}" loading="lazy">
-                        </div>
-          {%- endcomment -%}
-          <div class="step-ph step-ph--placeholder">［ 工程写真 ］</div>
-          <p>{{ step_text }}</p>
-        </div>
-      {%- endfor -%}
-    </div>
-  </div>
-</section>
-
-<!-- BBQ -->
-<section class="bbq" id="bbq">
-  <div class="wrap">
-    <span class="sec-eyebrow">夏のBBQセット</span>
-    <h2 class="sec-title">外食より、仲間と炭火を囲む夏。</h2>
-    <p class="sec-lead">直売所だから組める、鮮度そのままの海鮮BBQセット。人数とご予算で選べる2タイプをご用意しました。</p>
-    <div class="bbq-grid">
-      {%- comment -%}
-        画像準備後: <div class="bbq-visual">
-                      <img src="{{ 'bbq-seafood.jpg' | asset_url }}" alt="海鮮BBQセット" loading="lazy">
-                    </div>
-      {%- endcomment -%}
-      <div class="bbq-visual bbq-visual--placeholder">
-        ［ 画像差し込み ］<br>海鮮BBQセット<br>盛り合わせ・炭火シーン<br>1:1 比率
-      </div>
-      <div>
-        <div class="bbq-sets">
-          <div class="set-card reveal">
-            <div>
-              <div class="sname">スタンダードセット</div>
-              <div class="sdesc">気軽に楽しむ、友人とのBBQに。〔内容は確定後に記載〕</div>
-            </div>
-            <div class="sprice">¥5,980 <small>税込</small></div>
-          </div>
-          <div class="set-card reveal">
-            <div>
-              <div class="sname">プレミアムセット</div>
-              <div class="sdesc">少し贅沢に、特別な顔ぶれで。〔内容は確定後に記載〕</div>
-            </div>
-            <div class="sprice">¥6,980 <small>税込</small></div>
-          </div>
-        </div>
-        <p style="font-size:13px;color:var(--washi-dim);margin-top:20px;border-left:2px solid var(--hi);padding-left:12px;">海の日連休（7/18〜20）に間に合わせるなら、店頭受け取りは <b style="color:var(--kin-bright)">7/18（土）</b>まで。配送はお早めに。</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 最終CTA -->
-<section class="final">
-  <div class="wrap">
-    <h2 class="mincho">この夏の一日を、<br>うなぎで締めくくる。</h2>
-    <p>ご予約・ご注文はオンラインから。LINEのお友だちには、締切のご案内やお得な情報を先にお届けします。</p>
-    <div class="final-cta">
-      <a href="#order" class="btn-primary">うなぎ・BBQを予約する</a>
-      {%- comment -%} LINE友だち追加URLに差し替えてください {%- endcomment -%}
-      <a href="https://lin.ee/XXXXXXX" class="btn-line">LINEで友だち追加</a>
-    </div>
-  </div>
-</section>
-
-<!-- フッター -->
-<footer>
-  <div class="wrap foot-grid">
-    <div>
-      <div class="foot-brand">海老平や直売所<small>株式会社ケイアイ</small></div>
-    </div>
-    <div class="foot-info">
-      福岡市中央区港2-5-32-102<br>
-      TEL 092-771-6228 ／ 営業 10:00–17:00<br>
-      <span class="closed">定休日：水・日・祝</span>
-    </div>
-  </div>
-</footer>
-
-<script>
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
-    });
-  }, { threshold: .15 });
-  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-</script>
+{{ content_for_layout }}
 </body>
 </html>

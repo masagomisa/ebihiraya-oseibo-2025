@@ -1,0 +1,307 @@
+<div class="topbar">今年は <strong>二の丑なし</strong>。土用の丑の日は <strong>7月26日（日）の一日だけ</strong> ── ご予約はお早めに。</div>
+
+<header class="site">
+  <div class="brand">海老平や直売所<small>EBIHIRAYA ｜ 福岡・港</small></div>
+  <a href="#order" class="nav-cta">うなぎを予約する</a>
+</header>
+
+<!-- ヒーロー -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">土用の丑の日 2026</span>
+      <h1>暑い夏こそ<span class="ushi">鰻。</span></h1>
+      <p class="date">丑の日は <b>7/26</b>（日）</p>
+      <p class="note-2nd">今年は<b>二の丑がありません</b>。うなぎを味わう日はこの一日きり。冷凍蒲焼だから、慌てずに前もってご用意を。</p>
+      <div class="hero-cta">
+        <a href="#order" class="btn-primary">特大うなぎを予約する</a>
+        <a href="#bbq" class="btn-ghost">夏のBBQセットを見る</a>
+      </div>
+    </div>
+    <div class="unagi-stage">
+      <div class="scale-arrow">
+        <span class="tip">特大</span>
+        <span class="bar"></span>
+        <span>ほぼ原寸大</span>
+        <span class="bar"></span>
+      </div>
+      {%- if section.settings.hero_image != blank -%}
+        <div class="unagi-hero-img">
+          {{ section.settings.hero_image | image_url: width: 300 | image_tag: loading: 'eager', alt: '特大うなぎ蒲焼' }}
+        </div>
+      {%- else -%}
+        <div class="unagi-hero-img unagi-hero-img--placeholder"></div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+<!-- 受け取り3導線 -->
+<div class="delivery-bar">
+  <div class="wrap">
+    <div class="delivery-grid">
+      <div class="dcol">
+        <div class="k">ONLINE｜全国配送</div>
+        <div class="t">ご自宅へお届け</div>
+        <div class="d">クール便で発送します。<br>ご注文締切 <span class="deadline">7/23（木）</span></div>
+      </div>
+      <div class="dcol">
+        <div class="k">STORE｜店頭受け取り</div>
+        <div class="t">お店で受け取る</div>
+        <div class="d">ご予約分をお渡しします。<br>受け取り <span class="deadline">7/24（金）・25（土）</span></div>
+      </div>
+      <div class="dcol">
+        <div class="k">GIFT｜贈りもの</div>
+        <div class="t">お中元・お盆に</div>
+        <div class="d">日持ちする冷凍蒲焼。<br>暑中見舞い・帰省土産にも。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- うなぎ商品 -->
+<section id="order">
+  <div class="wrap">
+    <div class="product">
+      {%- if section.settings.product_image != blank -%}
+        <div class="product-visual">
+          {{ section.settings.product_image | image_url: width: 800 | image_tag: loading: 'lazy', alt: '特大うなぎ蒲焼 重箱盛り' }}
+        </div>
+      {%- else -%}
+        <div class="product-visual product-visual--placeholder">
+          ［ 画像差し込み ］<br>特大うなぎ蒲焼<br>重箱／盛り付けカット<br>4:5 比率
+        </div>
+      {%- endif -%}
+      <div class="reveal">
+        <span class="sec-eyebrow">特大うなぎ蒲焼（冷凍）</span>
+        <h2 class="sec-title">焼きたての照りを、<br>そのまま食卓へ。</h2>
+        <div class="price-row">
+          <span class="yen">¥</span>
+          <span class="num">{{ section.settings.unagi_price }}</span>
+          <span class="tax">（税込）</span>
+        </div>
+        {%- if section.settings.price_note != blank -%}
+          <p class="price-cap">{{ section.settings.price_note }}</p>
+        {%- endif -%}
+        <ul class="feat-list">
+          <li>ほぼ原寸大の特大サイズ。食べごたえ十分。</li>
+          <li>うなぎのビタミンAは、ほぼ全量が吸収されます。</li>
+          <li>専用の蒲焼のタレも単品で販売中。</li>
+          <li>冷凍だから、丑の日に合わせて慌てず準備できます。</li>
+        </ul>
+        <a href="{{ section.settings.unagi_url }}" class="btn-primary">数量を選んで予約する</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 美味しい温め方 -->
+<section class="steps">
+  <div class="wrap">
+    <span class="sec-eyebrow">美味しい温め方</span>
+    <h2 class="sec-title">ひと手間で、お店の味に。</h2>
+    <p class="sec-lead">冷凍うなぎは、温め方しだいで仕上がりが大きく変わります。この4手順で、皮はカリッと身はふっくら。</p>
+    <div class="step-grid">
+      <div class="step reveal">
+        <div class="no"><b>01</b></div>
+        {%- if section.settings.step1_image != blank -%}
+          <div class="step-ph">{{ section.settings.step1_image | image_url: width: 400 | image_tag: loading: 'lazy', alt: '手順1' }}</div>
+        {%- else -%}
+          <div class="step-ph step-ph--placeholder">［ 工程写真 ］</div>
+        {%- endif -%}
+        <p>熱湯に1分間浸して、余分なタレを落とす。</p>
+      </div>
+      <div class="step reveal">
+        <div class="no"><b>02</b></div>
+        {%- if section.settings.step2_image != blank -%}
+          <div class="step-ph">{{ section.settings.step2_image | image_url: width: 400 | image_tag: loading: 'lazy', alt: '手順2' }}</div>
+        {%- else -%}
+          <div class="step-ph step-ph--placeholder">［ 工程写真 ］</div>
+        {%- endif -%}
+        <p>キッチンペーパーで水分をやさしく拭き取る。</p>
+      </div>
+      <div class="step reveal">
+        <div class="no"><b>03</b></div>
+        {%- if section.settings.step3_image != blank -%}
+          <div class="step-ph">{{ section.settings.step3_image | image_url: width: 400 | image_tag: loading: 'lazy', alt: '手順3' }}</div>
+        {%- else -%}
+          <div class="step-ph step-ph--placeholder">［ 工程写真 ］</div>
+        {%- endif -%}
+        <p>タレと酒を1:1で、汁気がなくなるまで煮込む。</p>
+      </div>
+      <div class="step reveal">
+        <div class="no"><b>04</b></div>
+        {%- if section.settings.step4_image != blank -%}
+          <div class="step-ph">{{ section.settings.step4_image | image_url: width: 400 | image_tag: loading: 'lazy', alt: '手順4' }}</div>
+        {%- else -%}
+          <div class="step-ph step-ph--placeholder">［ 工程写真 ］</div>
+        {%- endif -%}
+        <p>仕上げにトースターで焼いて、カリッとさせる。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BBQ -->
+<section class="bbq" id="bbq">
+  <div class="wrap">
+    <span class="sec-eyebrow">夏のBBQセット</span>
+    <h2 class="sec-title">外食より、仲間と炭火を囲む夏。</h2>
+    <p class="sec-lead">直売所だから組める、鮮度そのままの海鮮BBQセット。人数とご予算で選べる2タイプをご用意しました。</p>
+    <div class="bbq-grid">
+      {%- if section.settings.bbq_image != blank -%}
+        <div class="bbq-visual">
+          {{ section.settings.bbq_image | image_url: width: 800 | image_tag: loading: 'lazy', alt: '海鮮BBQセット' }}
+        </div>
+      {%- else -%}
+        <div class="bbq-visual bbq-visual--placeholder">
+          ［ 画像差し込み ］<br>海鮮BBQセット<br>盛り合わせ・炭火シーン<br>1:1 比率
+        </div>
+      {%- endif -%}
+      <div>
+        <div class="bbq-sets">
+          <div class="set-card reveal">
+            <div>
+              <div class="sname">スタンダードセット</div>
+              <div class="sdesc">気軽に楽しむ、友人とのBBQに。〔内容は確定後に記載〕</div>
+            </div>
+            <div class="sprice">¥{{ section.settings.bbq_standard_price }} <small>税込</small></div>
+          </div>
+          <div class="set-card reveal">
+            <div>
+              <div class="sname">プレミアムセット</div>
+              <div class="sdesc">少し贅沢に、特別な顔ぶれで。〔内容は確定後に記載〕</div>
+            </div>
+            <div class="sprice">¥{{ section.settings.bbq_premium_price }} <small>税込</small></div>
+          </div>
+        </div>
+        <p style="font-size:13px;color:var(--washi-dim);margin-top:20px;border-left:2px solid var(--hi);padding-left:12px;">海の日連休（7/18〜20）に間に合わせるなら、店頭受け取りは <b style="color:var(--kin-bright)">7/18（土）</b>まで。配送はお早めに。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 最終CTA -->
+<section class="final">
+  <div class="wrap">
+    <h2 class="mincho">この夏の一日を、<br>うなぎで締めくくる。</h2>
+    <p>ご予約・ご注文はオンラインから。LINEのお友だちには、締切のご案内やお得な情報を先にお届けします。</p>
+    <div class="final-cta">
+      <a href="{{ section.settings.unagi_url }}" class="btn-primary">うなぎ・BBQを予約する</a>
+      <a href="{{ section.settings.line_url }}" class="btn-line">LINEで友だち追加</a>
+    </div>
+  </div>
+</section>
+
+<!-- フッター -->
+<footer class="lp-foot">
+  <div class="wrap foot-grid">
+    <div>
+      <div class="foot-brand">海老平や直売所<small>株式会社ケイアイ</small></div>
+    </div>
+    <div class="foot-info">
+      福岡市中央区港2-5-32-102<br>
+      TEL 092-771-6228 ／ 営業 10:00–17:00<br>
+      <span class="closed">定休日：水・日・祝</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: .15 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+{% schema %}
+{
+  "name": "土用の丑の日2026 LP",
+  "settings": [
+    {
+      "type": "header",
+      "content": "画像"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "ヒーロー：うなぎ原寸大（縦長）"
+    },
+    {
+      "type": "image_picker",
+      "id": "product_image",
+      "label": "商品：蒲焼 重箱盛り（4:5）"
+    },
+    {
+      "type": "image_picker",
+      "id": "step1_image",
+      "label": "手順1 写真"
+    },
+    {
+      "type": "image_picker",
+      "id": "step2_image",
+      "label": "手順2 写真"
+    },
+    {
+      "type": "image_picker",
+      "id": "step3_image",
+      "label": "手順3 写真"
+    },
+    {
+      "type": "image_picker",
+      "id": "step4_image",
+      "label": "手順4 写真"
+    },
+    {
+      "type": "image_picker",
+      "id": "bbq_image",
+      "label": "BBQ：海鮮セット 盛り合わせ（1:1）"
+    },
+    {
+      "type": "header",
+      "content": "価格・リンク"
+    },
+    {
+      "type": "text",
+      "id": "unagi_price",
+      "label": "うなぎ価格（税込・数字のみ）",
+      "default": "1,000"
+    },
+    {
+      "type": "text",
+      "id": "price_note",
+      "label": "価格注記",
+      "default": "※価格は仮置きです（仕入れ確定後に差し替え）"
+    },
+    {
+      "type": "text",
+      "id": "bbq_standard_price",
+      "label": "BBQ スタンダード価格（税込・数字のみ）",
+      "default": "5,980"
+    },
+    {
+      "type": "text",
+      "id": "bbq_premium_price",
+      "label": "BBQ プレミアム価格（税込・数字のみ）",
+      "default": "6,980"
+    },
+    {
+      "type": "url",
+      "id": "unagi_url",
+      "label": "うなぎ予約リンク（商品ページURL）"
+    },
+    {
+      "type": "url",
+      "id": "line_url",
+      "label": "LINE友だち追加URL"
+    }
+  ],
+  "presets": [
+    {
+      "name": "土用の丑の日2026 LP"
+    }
+  ]
+}
+{% endschema %}
